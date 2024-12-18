@@ -35,7 +35,6 @@ export const ChechboxFiltersGroup: React.FC<Props> = ({
         item.text.toLowerCase().includes(searchValue.toLowerCase())
       )
     : defaultItems.slice(0, limit);
-  console.log(list);
 
   return (
     <div className={className}>

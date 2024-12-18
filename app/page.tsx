@@ -4,6 +4,7 @@ import {
   Title,
   Filters,
   ProductCard,
+  ProductGroupList,
 } from "@/components/shared";
 
 export default function Home() {
@@ -23,11 +24,143 @@ export default function Home() {
           {/* Список пицц */}
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-              <ProductCard
-                imageUrl="https://media.dodostatic.net/image/r:292x292/11EF1CB7AB16CECF87C419EF9EEFACA0.avif"
-                price={1590}
-                id={0}
-                name="pizaa asd"
+              <ProductGroupList
+                title="Пиццы"
+                categoryId={1}
+                items={[
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 1,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 2,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 3,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 4,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 5,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 6,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 7,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 8,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 9,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                ]}
+              />
+              <ProductGroupList
+                title="Донер"
+                categoryId={2}
+                items={[
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 1,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 2,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 3,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 4,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 5,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 6,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 7,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 8,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D5FECCD3AC0B2E2C417625FCB02.avif",
+                    id: 9,
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                ]}
               />
             </div>
           </div>
