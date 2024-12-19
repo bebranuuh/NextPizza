@@ -94,7 +94,7 @@ export default function Home() {
                 ]}
               />
               <ProductGroupList
-                title="Донер"
+                title="Комбо"
                 categoryId={2}
                 items={[
                   {
