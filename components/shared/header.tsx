@@ -4,6 +4,8 @@ import { Container } from "./container";
 import Image from "next/image";
 import { Button } from "../ui";
 import { ArrowRight, ShoppingCart, User } from "lucide-react";
+import Link from "next/link";
+import { SearchInput } from ".";
 
 type Props = {
   className?: string;
@@ -14,14 +16,20 @@ export const Header: React.FC<Props> = ({ className }) => {
     <header className={cn("border border-b", className)}>
       <Container className="flex items-center py-8 justify-between">
         {/* Логотип (слева) */}
-        <div className="flex items-center gap-4">
-          <Image src={"/logo.png"} width={35} height={35} alt={"logo"} />
-          <div>
-            <h1 className="text-2xl font-black">Next Pizza</h1>
-            <h2 className="text-sm text-gray-400 leading-3">
-              Вкусней уже некуда
-            </h2>
+        <Link href="/">
+          <div className="flex items-center gap-4">
+            <Image src={"/logo.png"} width={35} height={35} alt={"logo"} />
+            <div>
+              <h1 className="text-2xl font-black">Next Pizza</h1>
+              <h2 className="text-sm text-gray-400 leading-3">
+                Вкусней уже некуда
+              </h2>
+            </div>
           </div>
+        </Link>
+
+        <div className="flex-1 mx-10">
+          <SearchInput />
         </div>
 
         {/* Кнопки (справа) */}
