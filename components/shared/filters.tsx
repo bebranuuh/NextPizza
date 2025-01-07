@@ -1,14 +1,24 @@
+"use client";
+
 import React from "react";
 import { Title } from "./title";
 import { ChechboxFiltersGroup, FilterCheckbox } from ".";
 import { Input } from "../ui";
 import { RangeSlider } from "../shared";
+import { useFilterIngredients } from "@/hooks/useFilterIngredients";
 
 interface Props {
   className?: string;
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
+  const { ingredients } = useFilterIngredients();
+
+  const items = ingredients.map((ingredient) => ({
+    value: String(ingredient.id),
+    text: ingredient.name,
+  }));
+
   return (
     <div className={className}>
       {/* Фильтрация */}
@@ -23,37 +33,17 @@ export const Filters: React.FC<Props> = ({ className }) => {
         <Title text="Цена от и до" size="sm" className="font-bold" />
         <div className="flex gap-3 my-4">
           <Input type="number" placeholder="0" min={0} max={4990} />
-          <Input type="number" placeholder="4990" min={1490} max={5000} />
+          <Input type="number" placeholder="4990" min={1490} max={4990} />
         </div>
-        <RangeSlider min={0} max={5000} step={10} value={[0, 5000]} />
+        <RangeSlider min={0} max={4990} step={10} value={[0, 4990]} />
       </div>
 
       <ChechboxFiltersGroup
         title="Ингредиенты"
         className="mt-5"
         limit={6}
-        defaultItems={[
-          { text: "Сырный соус", value: "1" },
-          { text: "Моцарелла", value: "2" },
-          { text: "Чеснок", value: "3" },
-          { text: "Соленные огурчики", value: "4" },
-          { text: "Красный лук", value: "5" },
-          { text: "Томаты", value: "6" },
-        ]}
-        items={[
-          { text: "Сырный соус", value: "1" },
-          { text: "Моцарелла", value: "2" },
-          { text: "Чеснок", value: "3" },
-          { text: "Соленные огурчики", value: "4" },
-          { text: "Красный лук", value: "5" },
-          { text: "Томаты", value: "6" },
-          { text: "Сырный соус", value: "1" },
-          { text: "Моцарелла", value: "2" },
-          { text: "Чеснок", value: "3" },
-          { text: "Соленные огурчики", value: "4" },
-          { text: "Красный лук", value: "5" },
-          { text: "Томаты", value: "6" },
-        ]}
+        defaultItems={items.slice(0, 6)}
+        items={items}
       />
     </div>
   );

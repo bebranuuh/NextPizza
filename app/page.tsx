@@ -3,7 +3,6 @@ import {
   Container,
   Title,
   Filters,
-  ProductCard,
   ProductGroupList,
 } from "@/components/shared";
 
