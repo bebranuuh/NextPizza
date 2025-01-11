@@ -25,8 +25,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
       <Title text="Фильтрация" size="lg" className="mb-5 font-bold" />
       {/* Самые верхние чекбоксы */}
       <div className="flex flex-col gap-4">
-        <FilterCheckbox text="Можно собирать" value="1" />
-        <FilterCheckbox text="Новинки" value="2" />
+        <FilterCheckbox name="asd" text="Можно собирать" value="1" />
+        <FilterCheckbox name="asdd" text="Новинки" value="2" />
       </div>
       {/* Цена */}
       <div className="mt-5 border-y border-y-neutral-100 py-6 pb-7">
@@ -45,6 +45,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
         defaultItems={items.slice(0, 6)}
         items={items}
         loading={loading}
+        name="ingredients"
         onClickCheckbox={onAddId}
         selectedIds={selectedIds}
       />
