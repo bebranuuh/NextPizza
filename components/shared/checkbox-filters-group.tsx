@@ -28,7 +28,6 @@ export const ChechboxFiltersGroup: React.FC<Props> = ({
   searchInputPlaceholder = "Поиск...",
   loading,
   onClickCheckbox,
-
   className,
   name,
   selectedValue,
