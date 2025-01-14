@@ -18,13 +18,33 @@ interface PriceProps {
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
-  const { ingredients, loading, onAddId, selectedIds } = useFilterIngredients();
+  const { ingredients, loading, onAddId, selectedIngredients } =
+    useFilterIngredients();
   const [prices, setPrices] = React.useState<PriceProps>({
     priceFrom: 0,
     priceTo: 4990,
   });
 
   const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>([]));
+  const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(
+    new Set<string>([])
+  );
+
+  const filters = {
+    ...prices,
+    pizzaTypes: Array.from(pizzaTypes),
+    sizes: Array.from(sizes),
+    ingredients: Array.from(selectedIngredients),
+  };
+
+  React.useEffect(() => {
+    const filters = {
+      ...prices,
+      pizzaTypes: Array.from(pizzaTypes),
+      sizes: Array.from(sizes),
+      ingredients: Array.from(selectedIngredients),
+    };
+  }, [filters]);
 
   const items = ingredients.map((ingredient) => ({
     value: String(ingredient.id),
@@ -40,6 +60,18 @@ export const Filters: React.FC<Props> = ({ className }) => {
       {/* Фильтрация */}
       <Title text="Фильтрация" size="lg" className="mb-5 font-bold" />
       {/* Самые верхние чекбоксы */}
+      <ChechboxFiltersGroup
+        limit={2}
+        name="sizes"
+        className="mb-5"
+        title="Тип теста"
+        onClickCheckbox={togglePizzaTypes}
+        selectedValue={pizzaTypes}
+        items={[
+          { text: "Тонкое", value: "1" },
+          { text: "Традиционное", value: "2" },
+        ]}
+      />
       <ChechboxFiltersGroup
         limit={3}
         name="sizes"
@@ -94,7 +126,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
         loading={loading}
         name="ingredients"
         onClickCheckbox={onAddId}
-        selectedValue={selectedIds}
+        selectedValue={selectedIngredients}
       />
     </div>
   );
