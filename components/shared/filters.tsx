@@ -7,35 +7,28 @@ import { Input } from "../ui";
 import { RangeSlider } from "../shared";
 import { useFilterIngredients } from "@/hooks/useFilterIngredients";
 import { useSet } from "react-use";
+import qs from "qs";
+import { useRouter } from "next/navigation";
 
 interface Props {
   className?: string;
 }
 
 interface PriceProps {
-  priceFrom: number;
-  priceTo: number;
+  priceFrom?: number;
+  priceTo?: number;
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
+  const router = useRouter();
   const { ingredients, loading, onAddId, selectedIngredients } =
     useFilterIngredients();
-  const [prices, setPrices] = React.useState<PriceProps>({
-    priceFrom: 0,
-    priceTo: 4990,
-  });
+  const [prices, setPrices] = React.useState<PriceProps>({});
 
   const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>([]));
   const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(
     new Set<string>([])
   );
-
-  const filters = {
-    ...prices,
-    pizzaTypes: Array.from(pizzaTypes),
-    sizes: Array.from(sizes),
-    ingredients: Array.from(selectedIngredients),
-  };
 
   React.useEffect(() => {
     const filters = {
@@ -44,7 +37,13 @@ export const Filters: React.FC<Props> = ({ className }) => {
       sizes: Array.from(sizes),
       ingredients: Array.from(selectedIngredients),
     };
-  }, [filters]);
+
+    const query = qs.stringify(filters, {
+      arrayFormat: "comma",
+    });
+
+    router.push(`?${query}`);
+  }, [prices, pizzaTypes, sizes, selectedIngredients, router]);
 
   const items = ingredients.map((ingredient) => ({
     value: String(ingredient.id),
@@ -110,7 +109,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
           min={0}
           max={4990}
           step={10}
-          value={[prices.priceFrom, prices.priceTo]}
+          value={[prices.priceFrom || 0, prices.priceTo || 4990]}
           onValueChange={([priceFrom, priceTo]) =>
             setPrices({ priceFrom, priceTo })
           }
